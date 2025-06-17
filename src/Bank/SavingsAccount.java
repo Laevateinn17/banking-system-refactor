@@ -8,7 +8,7 @@ public class SavingsAccount extends BankAccount {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	float rate= .05f;
+	InterestRate interestRate = new InterestRate(0.05f);
 	double maxWithLimit;
 //	String type;
 	
@@ -20,10 +20,16 @@ public class SavingsAccount extends BankAccount {
 	
 	public double getNetBalance()
 	{
-		double NetBalance= getbalance()+(getbalance()*rate);
+		double NetBalance= getbalance()+ interestRate.applyTo(getbalance());
 		return NetBalance;
 	}
 	
+	
+	
+	public InterestRate getInterestRate() {
+		return interestRate;
+	}
+
 	public void withdraw(double amount) throws MaxWithdraw, MaxBalance
 	{
 		if(amount<maxWithLimit)
