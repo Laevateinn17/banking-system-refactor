@@ -38,7 +38,7 @@ public class Bank implements Serializable {
 		return this.addAccount(acc);
 	}
 	
-	public int addAccount(String name, String  institutionName, double balance, double min_balance)
+	public int addAccount(String name, String  institutionName, double balance)
 	{
 		StudentAccount acc= new StudentAccount(name,balance,institutionName);
 		return this.addAccount(acc);

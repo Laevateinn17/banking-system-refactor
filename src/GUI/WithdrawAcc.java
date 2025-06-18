@@ -22,18 +22,16 @@ import java.awt.SystemColor;
 
 public class WithdrawAcc extends JFrame implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField textField;
 	private JTextField textField_1;
+	
+	private void clearFields() {
+		textField.setText(null);
+		textField_1.setText(null);
+	}
 
-
-	/**
-	 * Create the frame.
-	 */
 	public WithdrawAcc() {
 		setTitle("Withdraw From Account");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -87,45 +85,23 @@ public class WithdrawAcc extends JFrame implements Serializable {
 							JOptionPane.showMessageDialog(getComponent(0),"Withdraw Successful");
 							dispose();
 						}
-						else
-						{
-						textField.setText(null);
-						textField_1.setText(null);
-						
-						}
-						
 					} catch (MaxBalance e1) {
 						JOptionPane.showMessageDialog(getComponent(0), "Insufficient Balance");
 						JOptionPane.showMessageDialog(getComponent(0),"Failed");
-						textField.setText(null);
-						textField_1.setText(null);
 				
 					} catch (AccNotFound e1) {
 						JOptionPane.showMessageDialog(getComponent(0), "Sorry! Account Not Found");
 						JOptionPane.showMessageDialog(getComponent(0),"Failed");
-						textField.setText(null);
-						textField_1.setText(null);
 					
 					} catch (MaxWithdraw e1) {
 						JOptionPane.showMessageDialog(getComponent(0), "Maximum Withdraw Limit Exceed");
 						JOptionPane.showMessageDialog(getComponent(0),"Failed");
-						textField.setText(null);
-						textField_1.setText(null);
 						
 					} catch (InvalidAmount e1) {
 						JOptionPane.showMessageDialog(getComponent(0), "Invalid Amount");
 						JOptionPane.showMessageDialog(getComponent(0),"Failed");
-						textField.setText(null);
-						textField_1.setText(null);
-					}
-				
-				
-					textField.setText(null);
-					textField_1.setText(null);
-				
-				
-				
-
+					}	
+					clearFields();
 			}
 		});
 		btnDeposit.setBounds(73, 212, 89, 23);
@@ -137,16 +113,8 @@ public class WithdrawAcc extends JFrame implements Serializable {
 		btnReset.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			
-				textField.setText(null);
-				textField_1.setText(null);
+				clearFields();
 			}
 		});
-		
-		
-		
-		
-		
-		
-		
 	}
 }
